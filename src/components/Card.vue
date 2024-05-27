@@ -1,15 +1,18 @@
 <template>
-	<li class="link-card">
-		<a :href="href">
+	<article class="card">
+		<component :is="href ? 'a' : 'div'" :href="href">
 			<h2>
 				{{ title }}
-				<span>&rarr;</span>
+				<span v-if="href">&rarr;</span>
 			</h2>
-			<p>
+			<p v-if="body">
 				{{ body }}
 			</p>
-		</a>
-	</li>
+			<template v-else>
+				<slot />
+			</template>
+		</component>
+	</article>
 </template>
 
 <script>
@@ -23,19 +26,15 @@ export default {
 </script>
 
 <style scoped>
-.link-card {
-	list-style: none;
+.card {
 	display: flex;
 	padding: 1px;
-	background-color: #23262d;
-	background-image: none;
-	background-size: 400%;
 	border-radius: 7px;
-	background-position: 100%;
-	transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	background-color: #23262d;
 	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
-.link-card > a {
+.card > a, 
+.card > div {
 	width: 100%;
 	text-decoration: none;
 	line-height: 1.4;
@@ -43,8 +42,13 @@ export default {
 	border-radius: 8px;
 	color: white;
 	background-color: #23262d;
+	background-image: none;
+	background-size: 400%;
+	background-position: 100%;
+	transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 	opacity: 0.8;
 }
+
 h2 {
 	margin: 0;
 	font-size: 1.25rem;
@@ -54,11 +58,11 @@ p {
 	margin-top: 0.5rem;
 	margin-bottom: 0;
 }
-.link-card:hover, .link-card:focus-within {
+.card a:hover, .card a:focus-within {
 	background-position: 0;
 	background-image: var(--accent-gradient);
 }
-.link-card:hover h2, .link-card:focus-within h2 {
+.card a:hover h2, .card a:focus-within h2 {
 	color: rgb(var(--accent-light));
 }
 </style>

@@ -1,19 +1,21 @@
 {
   "name": "hello-astro",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.8",
-    "@astrojs/vue": "^4.0.8",
-    "astro": "^4.5.2",
-    "typescript": "^5.4.2",
-    "vue": "^3.4.21"
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/vue": "^4.3.0",
+    "astro": "^4.9.0",
+    "typescript": "^5.4.5",
+    "vue": "^3.4.27"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12"
   }
 }
